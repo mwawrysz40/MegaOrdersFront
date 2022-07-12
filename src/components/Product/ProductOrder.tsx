@@ -3,8 +3,8 @@ import {AddOrderResponse, Product } from "types";
 import {Link} from "react-router-dom";
 import {Header} from "../Header/Header";
 import {NameContext} from "../../contexts/name.context";
-import Select from "react-select/base";
 import {Form, FormControl} from "react-bootstrap";
+import {apiUrl} from "../../config/api";
 export const ProductOrder=()=>{
 
     interface ProductAdd{
@@ -18,7 +18,7 @@ export const ProductOrder=()=>{
     ]);
     const [resultInfo, setResultInfo] = useState<string | null>(null);
     const product= async()=>{
-        const res=await fetch('http://localhost:3001/product/all-product');
+        const res=await fetch(`${apiUrl}/product/all-product`);
         setData(await res.json());
     }
 
@@ -34,7 +34,7 @@ export const ProductOrder=()=>{
 
     const submit = async (e: FormEvent) => {
         e.preventDefault();
-         const res = await fetch('http://localhost:3001/order/add', {
+         const res = await fetch(`${apiUrl}/order/add`, {
              method: "POST",
              headers: {
                  'Content-Type': 'application/json',

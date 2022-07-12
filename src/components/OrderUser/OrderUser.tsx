@@ -5,13 +5,14 @@ import {Table} from "react-bootstrap";
 import {Link} from "react-router-dom";
 import {Header} from "../Header/Header";
 import {NameContext} from "../../contexts/name.context";
+import { apiUrl } from "src/config/api";
 
 export const OrderUser=()=>{
 
     const [data, setData] = useState<OrdersUser[]>([]);
     const {name,setName}=useContext(NameContext);
     const order= async()=>{
-        const res=await fetch('http://localhost:3001/order/all-user',{
+        const res=await fetch(`${apiUrl}/order/all-user`,{
             credentials: "include",
         });
         //console.log(await res.json())

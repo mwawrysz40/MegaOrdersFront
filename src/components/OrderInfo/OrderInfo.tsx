@@ -1,10 +1,10 @@
 import React, {useContext, useEffect, useState} from "react";
-import {Link, useParams} from "react-router-dom";
+import { useParams} from "react-router-dom";
 import { OrderProduct } from "types";
 import {Table} from "react-bootstrap";
-import {format} from "date-fns";
 import {NameContext} from "../../contexts/name.context";
 import {Header} from "../Header/Header";
+import { apiUrl } from "src/config/api";
 
 export const OrderInfo=()=>{
 const { id }= useParams();
@@ -13,7 +13,7 @@ const { id }= useParams();
     const {name,setName}=useContext(NameContext);
 
     const orderProducts= async()=>{
-        const res=await fetch(`http://localhost:3001/order/all-info/${id}`,{
+        const res=await fetch(`${apiUrl}/order/all-info/${id}`,{
             credentials: "include",
         });
         setData(await res.json());

@@ -1,17 +1,17 @@
-import React, {FormEvent, useContext, useEffect, useState} from "react";
+import React, { useContext, useEffect, useState} from "react";
 import { OrdersAdmin, OrderStatus } from "types";
 import {Table} from "react-bootstrap";
 import {format} from "date-fns";
-import {Link} from "react-router-dom";
 import {NameContext} from "../../contexts/name.context";
 import {Header} from "../Header/Header";
+import { apiUrl } from "src/config/api";
 
 export const OrderAdmin=()=>{
 
     const [data, setData] = useState<OrdersAdmin[]>([]);
     const {name,setName}=useContext(NameContext);
     const order= async()=>{
-        const res=await fetch('http://localhost:3001/order/all',{
+        const res=await fetch(`${apiUrl}/order/all`,{
             credentials: "include",
         });
         setData(await res.json());
@@ -21,7 +21,7 @@ export const OrderAdmin=()=>{
         const id=e.target.id;
         const stat=e.target.value;
         const change={"id":id,"status":stat};
-        const res = await fetch('http://localhost:3001/order/change-status', {
+        const res = await fetch(`${apiUrl}/order/change-status`, {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',

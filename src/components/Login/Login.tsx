@@ -4,6 +4,7 @@ import * as Yup from "yup";
 import {Link, useNavigate} from 'react-router-dom';
 import {Alert} from "react-bootstrap";
 import { LoginUser } from "types";
+import { apiUrl } from "src/config/api";
 
 
 export const Login = () => {
@@ -23,7 +24,7 @@ export const Login = () => {
         const handleLogin = async (formValue: LoginUser) => {
 
 
-                        const res = await fetch('http://localhost:3001/auth/login', {
+                        const res = await fetch(`${apiUrl}/auth/login`, {
                                 method: "POST",
                                 headers: {
                                         'Content-Type': 'application/json',
@@ -72,9 +73,6 @@ export const Login = () => {
 
                                             <div className="form-group">
                                                     <button type="submit" className="btn btn-primary btn-block" >
-                                                            {loading && (
-                                                                <span className="spinner-border spinner-border-sm"></span>
-                                                            )}
                                                             <span>Login</span>
                                                     </button>
                                             </div>

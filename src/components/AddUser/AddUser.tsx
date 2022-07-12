@@ -1,9 +1,11 @@
-import {ErrorMessage, useFormik} from "formik";
+import { useFormik} from "formik";
 import React, {useState} from "react";
 import {RegisterUser,RegisterUserResponse,UserRoleType} from 'types'
-import {Button, Form, FormGroup} from "react-bootstrap";
+import {Button, Form} from "react-bootstrap";
 import {Link} from "react-router-dom";
 import * as Yup from "yup";
+import { apiUrl } from "src/config/api";
+
 
 export const AddUser = () => {
 
@@ -30,7 +32,7 @@ export const AddUser = () => {
         validationSchema,
         onSubmit:async (values:RegisterUser)=>{
             setLoading(true);
-                const res=await fetch('http://localhost:3001/user/register', {
+                const res=await fetch(`${apiUrl}/user/register`, {
                     method: "POST",
                     headers: {
                         'Content-Type': 'application/json',

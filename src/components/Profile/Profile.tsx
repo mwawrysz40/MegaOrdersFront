@@ -3,6 +3,7 @@ import {Header} from "../Header/Header";
 import {Button, Stack} from "react-bootstrap";
 import {Link} from "react-router-dom";
 import {NameContext} from "../../contexts/name.context";
+import { apiUrl } from "src/config/api";
 
 
 export const Profile=()=>{
@@ -12,7 +13,7 @@ export const Profile=()=>{
 
 useEffect(()=>{
     (async ()=>{
-    const res=await fetch('http://localhost:3001/user/user-rola',{
+    const res=await fetch(`${apiUrl}/user/user-rola`,{
         credentials: "include",
     });
     const data=await res.json();

@@ -1,5 +1,6 @@
 import React from "react";
 import {Link} from "react-router-dom";
+import { apiUrl } from "src/config/api";
 
 interface Props{
     name:string;
@@ -8,7 +9,7 @@ interface Props{
 export const Header=(props:Props)=> {
 
     const logout = async () => {
-        const res = await fetch('http://localhost:3001/auth/logout', {
+        const res = await fetch(`${apiUrl}/auth/logout`, {
             credentials: "include",
         });
     }

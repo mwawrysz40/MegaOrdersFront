@@ -30,7 +30,7 @@ export const AddProduct=()=>{
     });
 
     const handleProduct=async(formValue:ProductAdd)=>{
-        const res=await fetch('http://localhost:3001/product/add', {
+        const res=await fetch('http://localhost:3001/api2/product/add', {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',
